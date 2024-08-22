@@ -6,6 +6,12 @@ Diagrama UML
 
 ----------------------------------------
 
+O **BrinquedoTecaOnline** foi implementado e o deploy da aplicação foi realizado utilizando o **Azure App Service**, uma plataforma oferecida pela Microsoft que permite o gerenciamento de aplicativos web de forma escalável e segura. Essa escolha proporcionou uma integração simples com o ecossistema do Azure, facilitando a configuração e o monitoramento contínuo da aplicação.
+
+Ao utilizar o Azure App Service, foi possível automatizar grande parte do processo de deploy, integrando facilmente com o repositório de código, garantindo que novas atualizações possam ser aplicadas de maneira eficiente. Além disso, o Azure App Service oferece recursos como balanceamento de carga, escalabilidade automática e monitoramento detalhado, assegurando que a aplicação possa atender à demanda com alta disponibilidade e desempenho.
+
+Link da API: https://brinquedotecaonline.azurewebsites.net/api/brinquedos
+
 INTEGRANTES: 
 
 550531 - Luis Fernando Menezes Zampar
