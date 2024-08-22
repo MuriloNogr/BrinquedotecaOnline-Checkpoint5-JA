@@ -2,7 +2,7 @@
 
 Diagrama UML
 
-![brinquedotecaUML](https://github.com/MuriloNogr/CheckPoint2-JavaAdvanced/blob/main/Brinquedoteca.jpg)
+![brinquedotecaUML](https://github.com/MuriloNogr/BrinquedotecaOnline/blob/main/brinquedotecaUML.png)
 
 ----------------------------------------
 
