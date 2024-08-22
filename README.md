@@ -18,105 +18,54 @@ INTEGRANTES:
 
 ------------------------------------------
 
-Descrição do Projeto
+Documentação do Código
 
-A UML (Unified Modeling Language) da Brinquedoteca Online ilustra a interação entre os componentes do sistema, facilitando a compreensão da arquitetura e do fluxo de dados.
+O projeto BrinquedoTecaOnline é uma aplicação web desenvolvida em Spring Boot que tem como objetivo gerenciar um sistema de cadastro de brinquedos. A aplicação está dividida em várias camadas, cada uma desempenhando uma função específica dentro do sistema.
 
-Componentes:
-
-Controller:
-BrinquedoController: Gerencia as requisições HTTP relacionadas aos brinquedos.
-HomeController: Gerencia a página inicial da aplicação.
-Service:
-BrinquedoService: Implementa as regras de negócio para os brinquedos.
-DTO:
-BrinquedoDTO: Objeto que representa os dados de um brinquedo para transferência entre camadas.
-Repository:
-BrinquedoRepository: Interage com o banco de dados para persistir e recuperar os brinquedos.
-Interações:
-
-Listar todos os brinquedos:
-O usuário envia uma requisição HTTP GET para o endpoint /brinquedos.
-O BrinquedoController recebe a requisição e chama o BrinquedoService para listar todos os brinquedos.
-O BrinquedoService consulta o BrinquedoRepository para recuperar a lista de brinquedos do banco de dados.
-O BrinquedoRepository recupera a lista de brinquedos do banco de dados e a retorna para o BrinquedoService.
-O BrinquedoService converte a lista de entidades Brinquedo em uma lista de objetos BrinquedoDTO para serem enviados ao controller.
-O BrinquedoController retorna a lista de BrinquedoDTO para o usuário em formato JSON.
-
-Encontrar um brinquedo por ID:
-O usuário envia uma requisição HTTP GET para o endpoint /brinquedos/{id}, onde {id} é o ID do brinquedo que deseja consultar.
-O BrinquedoController recebe a requisição e extrai o ID do brinquedo do parâmetro da URL.
-O BrinquedoController chama o BrinquedoService para encontrar o brinquedo pelo ID.
-O BrinquedoService consulta o BrinquedoRepository para recuperar o brinquedo do banco de dados pelo ID.
-O BrinquedoRepository recupera o brinquedo do banco de dados pelo ID e o retorna para o BrinquedoService.
-O BrinquedoService verifica se o brinquedo foi encontrado.
-Se o brinquedo foi encontrado, o BrinquedoService o converte em um objeto BrinquedoDTO e o retorna para o controller.
-Se o brinquedo não foi encontrado, o BrinquedoService retorna um código de erro HTTP 404 (Not Found).
-O BrinquedoController retorna o BrinquedoDTO ou o código de erro HTTP 404 para o usuário em formato JSON.
-
-Salvar um novo brinquedo:
-O usuário envia uma requisição HTTP POST para o endpoint /brinquedos, acompanhado de um JSON contendo os dados do novo brinquedo.
-O BrinquedoController recebe a requisição e extrai os dados do brinquedo do JSON.
-O BrinquedoController converte os dados do JSON em um objeto BrinquedoDTO.
-O BrinquedoController chama o BrinquedoService para salvar o novo brinquedo.
-O BrinquedoService converte o objeto BrinquedoDTO em uma entidade Brinquedo.
-O BrinquedoService chama o BrinquedoRepository para salvar a entidade Brinquedo no banco de dados.
-O BrinquedoRepository salva a entidade Brinquedo no banco de dados e retorna o ID gerado para o BrinquedoService.
-O BrinquedoService converte o ID gerado em um objeto BrinquedoDTO e o retorna para o controller.
-O BrinquedoController retorna o BrinquedoDTO para o usuário em formato JSON.
-
-Deletar um brinquedo:
-O usuário envia uma requisição HTTP DELETE para o endpoint /brinquedos/{id}, onde {id} é o ID do brinquedo que deseja excluir.
-O BrinquedoController recebe a requisição e extrai o ID do brinquedo do parâmetro da URL.
-O BrinquedoController chama o BrinquedoService para deletar o brinquedo pelo ID.
-O BrinquedoService chama o BrinquedoRepository para deletar o brinquedo do banco de dados pelo ID.
-O BrinquedoRepository deleta o brinquedo do banco de dados.
-O BrinquedoService retorna um código de sucesso HTTP 204 (No Content) para o controller.
-O BrinquedoController retorna o código de sucesso HTTP 204 para o usuário.
-
-Observações:
-
-A UML não apresenta as interações com a interface gráfica do usuário, como cliques em botões ou navegação entre páginas.
-A UML não detalha a implementação interna dos componentes, como métodos e atributos das classes.
-
-Componentes Adicionais:
-
-View:
-BrinquedoListView: Exibe a lista de brinquedos para o usuário.
-BrinquedoView: Exibe os detalhes de um brinquedo para o usuário.
-
-Formulário:
-BrinquedoForm: Permite ao usuário cadastrar um novo brinquedo.
-
-Interações Adicionais:
-
-Exibir a lista de brinquedos:
-O usuário acessa a página inicial da aplicação.
-O HomeController chama o BrinquedoService para listar todos os brinquedos.
-O BrinquedoService segue os mesmos passos da interação "Listar todos os brinquedos".
-O HomeController recebe a lista de BrinquedoDTO do BrinquedoService.
-O HomeController envia a lista de BrinquedoDTO para a BrinquedoListView.
-A BrinquedoListView renderiza a lista de brinquedos na tela do usuário.
-
-Exibir os detalhes de um brinquedo:
-O usuário clica em um brinquedo na lista de brinquedos.
-A BrinquedoListView extrai o ID do brinquedo clicado e o envia para o BrinquedoController.
-O BrinquedoController segue os mesmos passos da interação "Encontrar um brinquedo por ID".
-O BrinquedoController recebe o BrinquedoDTO do BrinquedoService.
-O BrinquedoController envia o BrinquedoDTO para a BrinquedoView.
-A BrinquedoView renderiza os detalhes do brinquedo na tela do usuário.
-
-Cadastrar um novo brinquedo:
-O usuário acessa a página de cadastro de brinquedos.
-O BrinquedoController cria um novo BrinquedoForm.
-O BrinquedoController envia o BrinquedoForm para a view.
-A view renderiza o BrinquedoForm na tela do usuário.
-O usuário preenche o formulário com os dados do novo brinquedo.
-O usuário envia o formulário preenchido para o BrinquedoController.
-O BrinquedoController extrai os dados do formulário e os converte em um objeto BrinquedoDTO.
-O BrinquedoController segue os mesmos passos da interação "Salvar um novo brinquedo".
-O BrinquedoController recebe o BrinquedoDTO do BrinquedoService.
-O BrinquedoController redireciona o usuário para a página de listagem de brinquedos.
+1. BrinquedoController
+Descrição: É o controlador REST responsável por gerenciar as requisições HTTP para a API de brinquedos. Ele define os endpoints para listar, buscar por ID, criar, atualizar e deletar brinquedos.
+Métodos:
+getAllBrinquedos(): Retorna uma lista de todos os brinquedos.
+getBrinquedoById(Long id): Retorna um brinquedo específico com base no ID.
+createBrinquedo(BrinquedoDTO brinquedoDTO): Cria um novo brinquedo com base nos dados fornecidos.
+updateBrinquedo(Long id, BrinquedoDTO brinquedoDTO): Atualiza um brinquedo existente com base no ID.
+deleteBrinquedo(Long id): Deleta um brinquedo com base no ID.
+2. BrinquedoDTO
+Descrição: É o Data Transfer Object (DTO) que representa os dados do brinquedo que são transferidos entre as camadas da aplicação.
+Atributos:
+ID_BRINQUEDO: ID do brinquedo.
+NOME_BRINQUEDO: Nome do brinquedo.
+TIPO_BRINQUEDO: Tipo do brinquedo.
+CLASSIFICACAO_BRINQUEDO: Classificação do brinquedo.
+TAMANHO_BRINQUEDO: Tamanho do brinquedo.
+PRECO_BRINQUEDO: Preço do brinquedo.
+3. GlobalExceptionHandler
+Descrição: Classe responsável por capturar e tratar exceções lançadas durante a execução das requisições. Retorna uma mensagem de erro personalizada em caso de exceções.
+Métodos:
+handleRuntimeException(RuntimeException e): Captura exceções do tipo RuntimeException e retorna uma mensagem de erro.
+4. Brinquedo
+Descrição: Entidade que representa a tabela TB_BRINQUEDOS no banco de dados. Contém as colunas e respectivas anotações que mapeiam para a estrutura do banco.
+Atributos:
+ID_BRINQUEDO: ID do brinquedo, gerado automaticamente.
+NOME_BRINQUEDO: Nome do brinquedo.
+TIPO_BRINQUEDO: Tipo do brinquedo.
+CLASSIFICACAO_BRINQUEDO: Classificação do brinquedo.
+TAMANHO_BRINQUEDO: Tamanho do brinquedo.
+PRECO_BRINQUEDO: Preço do brinquedo.
+5. BrinquedoRepository
+Descrição: Interface que estende JpaRepository, fornecendo métodos para operações CRUD na entidade Brinquedo. O Spring Data JPA gera automaticamente a implementação desta interface.
+Métodos:
+Métodos padrão do JpaRepository para realizar operações como findAll, findById, save e delete.
+6. BrinquedoService
+Descrição: Serviço que contém a lógica de negócio para gerenciar os brinquedos. Converte entre as entidades Brinquedo e BrinquedoDTO, e utiliza o BrinquedoRepository para interagir com o banco de dados.
+Métodos:
+getAllBrinquedos(): Retorna todos os brinquedos convertidos para DTO.
+getBrinquedoById(Long id): Retorna um brinquedo específico como DTO.
+saveBrinquedo(BrinquedoDTO brinquedoDTO): Salva um novo brinquedo e o retorna como DTO.
+updateBrinquedo(Long id, BrinquedoDTO brinquedoDTO): Atualiza um brinquedo existente e o retorna como DTO.
+deleteBrinquedo(Long id): Deleta um brinquedo existente.
+convertToDTO(Brinquedo brinquedo): Converte uma entidade Brinquedo para BrinquedoDTO.
+convertToEntity(BrinquedoDTO dto): Converte um BrinquedoDTO para entidade Brinquedo.
 
 Segue uma descrição direta e profissional dos artefatos definidos no arquivo pom.xml para documentação de projeto:
 
@@ -142,35 +91,83 @@ A UML agora apresenta uma visão mais completa das interações do sistema, incl
 A UML ainda não detalha a implementação interna dos componentes, mas fornece uma base sólida para a compreensão da arquitetura e do funcionamento do sistema.
 
 
-EndPoint Cadastrar
+Endpoints da API
+GET /api/brinquedos
 
-![Cadastrar](https://github.com/MuriloNogr/CheckPoint2-JavaAdvanced/blob/main/Cadastrar.png)
+Descrição: Retorna uma lista com todos os brinquedos cadastrados no sistema.
+Resposta: Uma lista de objetos BrinquedoDTO.
+GET /api/brinquedos/{id}
 
+Descrição: Retorna os detalhes de um brinquedo específico com base no ID fornecido.
+Parâmetros:
+id (Path Variable): ID do brinquedo a ser buscado.
+Resposta: Um objeto BrinquedoDTO correspondente ao ID fornecido.
+POST /api/brinquedos
 
-Endpoint listar
+Descrição: Cria um novo brinquedo no sistema com base nos dados fornecidos.
+Corpo da Requisição: Um objeto BrinquedoDTO com os detalhes do novo brinquedo.
+Resposta: O objeto BrinquedoDTO recém-criado, incluindo o ID gerado.
+PUT /api/brinquedos/{id}
 
-![Listar](https://github.com/MuriloNogr/CheckPoint2-JavaAdvanced/blob/main/Listar.png)
+Descrição: Atualiza as informações de um brinquedo existente com base no ID fornecido.
+Parâmetros:
+id (Path Variable): ID do brinquedo a ser atualizado.
+Corpo da Requisição: Um objeto BrinquedoDTO com os novos dados do brinquedo.
+Resposta: O objeto BrinquedoDTO atualizado.
+DELETE /api/brinquedos/{id}
 
+Descrição: Remove um brinquedo do sistema com base no ID fornecido.
+Parâmetros:
+id (Path Variable): ID do brinquedo a ser deletado.
+Resposta: Nenhuma (retorna um status HTTP indicando sucesso ou falha).
+CORS
+Cada um desses endpoints está configurado para aceitar requisições CORS (Cross-Origin Resource Sharing) originadas de http://localhost:8081, permitindo que o frontend, rodando nessa porta, possa acessar a API sem problemas de origem cruzada.
 
-EndPoint home
+O projeto BrinquedoTecaOnline é configurado utilizando o Maven, e as dependências essenciais para seu funcionamento são gerenciadas através do arquivo pom.xml. A seguir, descrevo as principais dependências, suas funções, a versão do Java utilizada, e a versão do Spring Boot.
 
-![Home](https://github.com/MuriloNogr/CheckPoint2-JavaAdvanced/blob/main/Home.png)
+Versão do Java
+Java 17: O projeto é configurado para ser compilado e executado utilizando a versão 17 do Java, que é uma das versões LTS (Long-Term Support), oferecendo novos recursos e melhorias de desempenho em relação a versões anteriores.
+Versão do Spring Boot
+Spring Boot 3.0.0: O projeto utiliza a versão 3.0.0 do Spring Boot. Esta versão oferece melhorias em termos de performance, segurança e suporte a novas tecnologias, além de simplificar o desenvolvimento de aplicações Java com convenções pré-configuradas.
+Dependências
+org.hibernate.validator
+(8.0.0.Final)
 
+Função: Fornece a validação de dados baseada em anotações, como @NotNull, @Size, entre outras, garantindo que os dados manipulados pelo sistema estejam de acordo com as regras de validação definidas.
+org.glassfish
+.el (4.0.1)
 
-http://localhost:8080/ (a porta que está definida como padrão dá acesso a home da aplicação)
+Função: Implementa a especificação Expression Language (EL), que é utilizada em várias tecnologias Java para dinamicamente acessar e manipular propriedades de objetos, principalmente em ambientes web.
+jakarta.servlet
+.servlet-api (5.0.0)
 
-http://localhost:8080/brinquedos/cadastrar (dá acesso a ferramenta de inserção de novos brinquedos na base de dados OracleSQL)
+Função: Fornece a API de Servlet, que é essencial para a criação de aplicações web Java. A dependência está marcada com o escopo provided, indicando que ela é fornecida pelo contêiner de servlet (como o Tomcat) em tempo de execução.
+org.springframework.boot
 
-http://localhost:8080/brinquedos/listar (Busca e lista todos os brinquedos existentes na base de dados)
+Função: Integra o Spring Data JPA ao projeto, facilitando a implementação de repositórios e o gerenciamento de entidades persistidas no banco de dados com base no JPA (Java Persistence API).
+org.springframework.boot
 
-É importante lembrar que a UML é apenas uma ferramenta para modelar o sistema, e sua completude e detalhamento dependem do objetivo da modelagem.
+Função: Adiciona suporte ao HATEOAS (Hypermedia as the Engine of Application State), que é um conceito RESTful para incluir links dinâmicos nas respostas HTTP, permitindo uma navegação fácil entre recursos relacionados.
+org.springframework.boot
 
-TB_Brinquedos
+Função: Inclui as bibliotecas necessárias para a criação de aplicações web, como Spring MVC e Tomcat. Fornece suporte para criação de APIs RESTful e manipulação de requisições HTTP.
+org.springframework.boot
 
-![Banco](https://github.com/MuriloNogr/CheckPoint2-JavaAdvanced/blob/main/TB_Brinquedo.png)
+Função: Oferece ferramentas de desenvolvimento que melhoram a experiência do desenvolvedor, como o reload automático de aplicações, simplificando o ciclo de desenvolvimento.
+com.oracle.database.jdbc
 
+Função: Fornece o driver JDBC para conectar a aplicação ao banco de dados Oracle, permitindo a execução de operações de persistência e recuperação de dados no banco.
+org.projectlombok
 
-![Spring initializr](https://github.com/MuriloNogr/CheckPoint2-JavaAdvanced/blob/main/springInitializr.png)
+Função: Simplifica o código Java ao gerar automaticamente código comum, como getters, setters, construtores e métodos equals e hashCode, através de anotações. A dependência está marcada como opcional, pois é usada apenas em tempo de desenvolvimento.
+org.springframework.boot
 
-Versão: 3.2.5
+Função: Inclui as bibliotecas necessárias para a realização de testes unitários e de integração, como JUnit, Mockito e Hamcrest, facilitando a criação de testes automatizados para a aplicação.
+org.springdoc
+(1.6.9)
 
+Função: Integra o Spring Boot com a especificação OpenAPI, permitindo a geração automática de documentação interativa para a API REST através de uma interface web, facilitando a exploração e teste dos endpoints.
+Plugin de Build
+org.springframework.boot
+Função: Facilita a execução e o empacotamento da aplicação Spring Boot através de comandos Maven, como mvn spring-boot:run para executar a aplicação e mvn package para empacotar a aplicação em um arquivo JAR executável. O plugin também inclui uma configuração para excluir a dependência do Lombok no build final, caso necessário.
+Essas dependências e configurações fornecem a base para o desenvolvimento e execução da aplicação BrinquedoTecaOnline, garantindo que todas as funcionalidades essenciais sejam suportadas e que o desenvolvimento seja o mais eficiente possível.
