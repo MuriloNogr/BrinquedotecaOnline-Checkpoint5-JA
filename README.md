@@ -10,7 +10,7 @@ O **BrinquedoTecaOnline** foi implementado e o deploy da aplicação foi realiza
 
 Ao utilizar o Azure App Service, foi possível automatizar grande parte do processo de deploy, integrando facilmente com o repositório de código, garantindo que novas atualizações possam ser aplicadas de maneira eficiente. Além disso, o Azure App Service oferece recursos como balanceamento de carga, escalabilidade automática e monitoramento detalhado, assegurando que a aplicação possa atender à demanda com alta disponibilidade e desempenho.
 
-Link da API: https://brinquedotecaonline.azurewebsites.net/api/brinquedos
+Link da API: https://brinquedoteca-f8hcceccawa8cwej.brazilsouth-01.azurewebsites.net/api/brinquedos
 
 INTEGRANTES: 
 
