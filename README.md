@@ -73,8 +73,6 @@ deleteBrinquedo(Long id): Deleta um brinquedo existente.
 convertToDTO(Brinquedo brinquedo): Converte uma entidade Brinquedo para BrinquedoDTO.
 convertToEntity(BrinquedoDTO dto): Converte um BrinquedoDTO para entidade Brinquedo.
 
-Segue uma descrição direta e profissional dos artefatos definidos no arquivo pom.xml para documentação de projeto:
-
 Artefatos do Projeto
 spring-boot-starter-data-jpa: Configura o Spring Data JPA para integração com bases de dados usando Hibernate como implementação JPA.
 spring-boot-starter-data-rest: Permite a exposição automática de repositórios Spring Data como endpoints REST.
