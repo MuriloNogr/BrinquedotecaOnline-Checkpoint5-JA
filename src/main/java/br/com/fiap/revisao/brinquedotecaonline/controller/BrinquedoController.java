@@ -3,66 +3,54 @@ package br.com.fiap.revisao.brinquedotecaonline.controller;
 import br.com.fiap.revisao.brinquedotecaonline.dto.BrinquedoDTO;
 import br.com.fiap.revisao.brinquedotecaonline.service.BrinquedoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api/brinquedos")
 public class BrinquedoController {
 
     @Autowired
     private BrinquedoService brinquedoService;
 
-    @CrossOrigin(origins = "http://localhost:8081")
     @GetMapping
-    public List<BrinquedoDTO> getAllBrinquedos() {
+    public String getAllBrinquedos(Model model) {
         List<BrinquedoDTO> brinquedos = brinquedoService.getAllBrinquedos();
-        brinquedos.forEach(brinquedo ->
-                brinquedo.add(WebMvcLinkBuilder.linkTo(
-                        WebMvcLinkBuilder.methodOn(BrinquedoController.class).getBrinquedoById(brinquedo.getID_BRINQUEDO())
-                ).withSelfRel())
-        );
-        return brinquedos;
+        model.addAttribute("brinquedos", brinquedos);
+        return "brinquedos";
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
-    @GetMapping("/{id}")
-    public BrinquedoDTO getBrinquedoById(@PathVariable Long id) {
-        BrinquedoDTO brinquedo = brinquedoService.getBrinquedoById(id);
-        brinquedo.add(WebMvcLinkBuilder.linkTo(
-                WebMvcLinkBuilder.methodOn(BrinquedoController.class).getAllBrinquedos()
-        ).withRel("all-brinquedos"));
-        brinquedo.add(WebMvcLinkBuilder.linkTo(
-                WebMvcLinkBuilder.methodOn(BrinquedoController.class).getBrinquedoById(id)
-        ).withSelfRel());
-        return brinquedo;
+    @GetMapping("/new")
+    public String showCreateForm(Model model) {
+        model.addAttribute("brinquedo", new BrinquedoDTO());
+        return "brinquedo-form";
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
     @PostMapping
-    public BrinquedoDTO createBrinquedo(@RequestBody BrinquedoDTO brinquedoDTO) {
-        BrinquedoDTO savedBrinquedo = brinquedoService.saveBrinquedo(brinquedoDTO);
-        savedBrinquedo.add(WebMvcLinkBuilder.linkTo(
-                WebMvcLinkBuilder.methodOn(BrinquedoController.class).getBrinquedoById(savedBrinquedo.getID_BRINQUEDO())
-        ).withSelfRel());
-        return savedBrinquedo;
+    public String createBrinquedo(@ModelAttribute("brinquedo") BrinquedoDTO brinquedoDTO) {
+        brinquedoService.saveBrinquedo(brinquedoDTO);
+        return "redirect:/api/brinquedos";
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
-    @PutMapping("/{id}")
-    public BrinquedoDTO updateBrinquedo(@PathVariable Long id, @RequestBody BrinquedoDTO brinquedoDTO) {
-        BrinquedoDTO updatedBrinquedo = brinquedoService.updateBrinquedo(id, brinquedoDTO);
-        updatedBrinquedo.add(WebMvcLinkBuilder.linkTo(
-                WebMvcLinkBuilder.methodOn(BrinquedoController.class).getBrinquedoById(id)
-        ).withSelfRel());
-        return updatedBrinquedo;
+    @GetMapping("/edit/{id}")
+    public String showUpdateForm(@PathVariable Long id, Model model) {
+        BrinquedoDTO brinquedo = brinquedoService.getBrinquedoById(id);
+        model.addAttribute("brinquedo", brinquedo);
+        return "brinquedo-form";
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
-    @DeleteMapping("/{id}")
-    public void deleteBrinquedo(@PathVariable Long id) {
+    @PostMapping("/edit/{id}")
+    public String updateBrinquedo(@PathVariable Long id, @ModelAttribute("brinquedo") BrinquedoDTO brinquedoDTO) {
+        brinquedoService.updateBrinquedo(id, brinquedoDTO);
+        return "redirect:/api/brinquedos";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteBrinquedo(@PathVariable Long id) {
         brinquedoService.deleteBrinquedo(id);
+        return "redirect:/api/brinquedos";
     }
 }

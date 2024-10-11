@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Formulário de Brinquedo</title>
+</head>
+<body>
+<h1>Formulário de Brinquedo</h1>
+<a th:href="@{/api/index}">
+    <button>Voltar</button>
+</a>
+
+<form th:action="${brinquedo.ID_BRINQUEDO} == null ? '/api/brinquedos' : '/api/brinquedos/edit/' + ${brinquedo.ID_BRINQUEDO}"
+      th:object="${brinquedo}" method="post">
+    <div>
+        <label for="NOME_BRINQUEDO">Nome:</label>
+        <input type="text" id="NOME_BRINQUEDO" th:field="*{NOME_BRINQUEDO}" placeholder="Nome do brinquedo" required>
+    </div>
+    <div>
+        <label for="TIPO_BRINQUEDO">Tipo:</label>
+        <input type="text" id="TIPO_BRINQUEDO" th:field="*{TIPO_BRINQUEDO}" placeholder="Tipo do brinquedo" required>
+    </div>
+    <div>
+        <label for="CLASSIFICACAO_BRINQUEDO">Classificação:</label>
+        <input type="text" id="CLASSIFICACAO_BRINQUEDO" th:field="*{CLASSIFICACAO_BRINQUEDO}" placeholder="Classificação do brinquedo" required>
+    </div>
+    <div>
+        <label for="TAMANHO_BRINQUEDO">Tamanho:</label>
+        <input type="text" id="TAMANHO_BRINQUEDO" th:field="*{TAMANHO_BRINQUEDO}" placeholder="Tamanho do brinquedo" required>
+    </div>
+    <div>
+        <label for="PRECO_BRINQUEDO">Preço:</label>
+        <input type="text" id="PRECO_BRINQUEDO" th:field="*{PRECO_BRINQUEDO}" placeholder="Preço do brinquedo" required>
+    </div>
+    <div>
+        <label for="URL_IMAGEM_BRINQUEDO">URL da Imagem:</label>
+        <input type="text" id="URL_IMAGEM_BRINQUEDO" th:field="*{URL_IMAGEM_BRINQUEDO}" placeholder="URL da imagem do brinquedo">
+    </div>
+    <div>
+        <button type="submit" th:text="${brinquedo.ID_BRINQUEDO} == null ? 'Adicionar' : 'Salvar'"></button>
+    </div>
+</form>
+</body>
+</html>

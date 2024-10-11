@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>Lista de Brinquedos</title>
+</head>
+<body>
+<h1>Lista de Brinquedos</h1>
+
+<div style="margin-bottom: 20px;">
+  <a th:href="@{/api/index}">
+    <button>Voltar para a Home</button>
+  </a>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Tipo</th>
+    <th>Classificação</th>
+    <th>Tamanho</th>
+    <th>Imagem</th>
+    <th>Preço</th>
+    <th>Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="brinquedo : ${brinquedos}">
+    <td th:text="${brinquedo.ID_BRINQUEDO}">ID</td>
+    <td th:text="${brinquedo.NOME_BRINQUEDO}">Nome</td>
+    <td th:text="${brinquedo.TIPO_BRINQUEDO}">Tipo</td>
+    <td th:text="${brinquedo.CLASSIFICACAO_BRINQUEDO}">Classificação</td>
+    <td th:text="${brinquedo.TAMANHO_BRINQUEDO}">Tamanho</td>
+    <td>
+      <img th:src="${brinquedo.URL_IMAGEM_BRINQUEDO}" alt="Imagem do Brinquedo"/>
+    </td>
+    <td th:text="'R$ ' + ${brinquedo.PRECO_BRINQUEDO}">Preço</td>
+    <td>
+      <a th:href="@{'/api/brinquedos/edit/' + ${brinquedo.ID_BRINQUEDO}}">
+        <button>Editar</button>
+      </a>
+      <a th:href="@{'/api/brinquedos/delete/' + ${brinquedo.ID_BRINQUEDO}}">
+        <button>Excluir</button>
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div style="margin-top: 20px;">
+  <a th:href="@{/api/brinquedos/new}">
+    <button>Adicionar Novo Brinquedo</button>
+  </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+body {
+    background-color: #000000;
+    color: #D8BFD8;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #D8BFD8;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #D8BFD8;
+}
+
+a:hover {
+    color: #FFFFFF;
+}
+
+button {
+    background-color: #D8BFD8;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #C71585;
+    color: #FFFFFF;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #D8BFD8;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #4B0082;
+    color: #FFFFFF;
+}
+
+tr:nth-child(even) {
+    background-color: #1C1C1C;
+}
+
+tr:hover {
+    background-color: #333333;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #D8BFD8;
+    border-radius: 5px;
+    background-color: #1C1C1C;
+    color: #D8BFD8;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #111111;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+img {
+    max-width: 100px;
+    border-radius: 5px;
+}
+
+.nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.nav ul li a {
+    color: #D8BFD8;
+    background-color: #111111;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.nav ul li a:hover {
+    background-color: #4B0082;
+    color: #FFFFFF;
+}
+#index-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(211, 180, 252, 0.5);
+}
+
+#index-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+#index-nav li {
+    margin: 10px 0;
+}
+
+#index-nav a {
+    text-decoration: none;
+    color: #D3B4FC;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+#index-nav a:hover {
+    background-color: #5e5e5e;
+}

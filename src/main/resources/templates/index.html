@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>BrinquedoTecaOnline - Home</title>
+</head>
+<body>
+<div id="index-container">
+    <h1>Bem-vindo à BrinquedoTecaOnline</h1>
+    <p>Esta é a página inicial, acessível apenas após login.</p>
+    <nav id="index-nav">
+        <ul>
+            <li><a th:href="@{/api/brinquedos}">Listar Brinquedos</a></li>
+            <li><a th:href="@{/logout}">Sair</a></li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

@@ -6,7 +6,6 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "TB_BRINQUEDOS")
-
 public class Brinquedo {
 
     @Id
@@ -27,4 +26,7 @@ public class Brinquedo {
 
     @Column(nullable = false)
     private String PRECO_BRINQUEDO;
+
+    @Column(nullable = false)
+    private String URL_IMAGEM_BRINQUEDO;
 }
