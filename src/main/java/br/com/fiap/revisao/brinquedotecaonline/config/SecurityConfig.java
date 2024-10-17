@@ -21,7 +21,7 @@ public class SecurityConfig {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/api/index", true)
+                .defaultSuccessUrl("/api/brinquedos", true)
                 .permitAll()
                 .and()
                 .logout()
