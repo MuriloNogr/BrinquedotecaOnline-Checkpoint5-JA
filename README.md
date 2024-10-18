@@ -1,20 +1,15 @@
 ![Logo BrinquedotecaOnline](https://github.com/MuriloNogr/CheckPoint2-JavaAdvanced/blob/main/BrinquedoTeca.png)
 
-INTEGRANTES: 
-
-550531 - Luis Fernando Menezes Zampar
-
-551694 - Diogo Fagioli Bombonatti
-
-89162 - Murilo Nogueira
-
-550711 - Gabriel Galdino da Silva
 
 ------------------------------------------
 
 # BrinquedoTecaOnline
 
 Este projeto é uma aplicação web para o gerenciamento de brinquedos, desenvolvido em **Java** com **Spring Boot**. A aplicação utiliza **Spring Security** para controle de autenticação e autorização, além de **Thymeleaf** para renderização de páginas do frontend. O sistema oferece uma interface CRUD para o cadastro de brinquedos, com autenticação baseada em login, e foi implantado na plataforma **Fly.io**.
+
+## Acessar a Aplicação
+
+https://brinquedotecaonline-small-log-8264.fly.dev/api/index
 
 ## Visão Geral do Projeto
 
@@ -173,3 +168,25 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
 
 ## Diagrama UML
+
+![CheckPoint5JaUml](https://github.com/user-attachments/assets/e64b5e03-908e-446e-8ef3-8aa62d117e65)
+
+## Execução Local
+
+Para rodar a aplicação localmente, siga as etapas:
+
+1. Clone este repositório: `git clone <url-do-repositorio>`
+2. Navegue até o diretório: `cd BrinquedoTecaOnline`
+3. Compile o projeto e execute com Maven:
+    ```bash
+    mvn spring-boot:run
+    ```
+
+4. Acesse a aplicação no navegador em `http://localhost:8080`.
+
+## Contribuidores
+
+- **Luis Fernando Menezes Zampar** - RM 550531
+- **Diogo Fagioli Bombonatti** - RM 551694
+- **Murilo Nogueira** - RM 89162
+- **Gabriel Galdino da Silva** - RM 550711
